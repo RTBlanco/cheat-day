@@ -6,6 +6,7 @@ function App() {
 
   return (
     <>
+      <h1>Cheat Day</h1>
       
     </>
   )
