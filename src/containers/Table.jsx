@@ -5,37 +5,37 @@ const TABLE_HEAD = ["Days", "Calories"];
 const TABLE_ROWS = [
   {
     day: "Monday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Tuesday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Wednesday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Thursday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Friday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Saturday",
-    cals: "1000",
+    cals: "1500",
   },
 
   {
     day: "Sunday",
-    cals: "1000",
+    cals: "1500",
   },
 ];
 
@@ -44,11 +44,11 @@ export default function Table() {
     <section className="w-full">
       <div className="p-6">
         <Typography variant="lead" color="blue-gray" className="font-bold">
-          Team members and roles
+          ZigZag Dieting
         </Typography>
         <Typography className="mb-4 w-80 font-normal text-gray-600 md:w-full">
-          Overview of the key personnel involved in our project and their
-          geographical distribution.
+        Zigzag dieting, or calorie cycling, is a method where you alternate between high- and low-calorie days to keep metabolism active, prevent plateaus, and support weight management.
+        By entering the amount of calories you wish consume in a week plus how many rest days you want, this will generate a simple caloric week plan that you can follow.By default the weekend are considerd cheatdays!
         </Typography>
       </div>
       <Card className="h-full w-full border border-gray-300 px-6">
@@ -96,6 +96,28 @@ export default function Table() {
               );
             })}
           </tbody>
+          <tfoot className="border-t border-gray-300">
+            <tr>
+              <td className="p-4">
+                <Typography
+                  color="blue-gray"
+                  variant="small"
+                  className="font-bold"
+                >
+                  Total Calories
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  color="blue-gray"
+                  variant="small"
+                  className="font-bold"
+                >
+                  10500
+                </Typography>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </Card>
     </section>
