@@ -32,13 +32,7 @@ export default function Form() {
       </div>
 
       <div className='flex justify-center my-10'>
-        {/* <button
-          type="submit"
-          className="w-64  rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Enter
-        </button> */}
-        <Button>Button</Button>
+        <Button>Enter</Button>
       </div>
     </form>
   );
