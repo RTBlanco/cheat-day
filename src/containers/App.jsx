@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Form from './Form'
+import Table from './Table'
 
 const user = {
   name: 'Tom Cook',
@@ -32,8 +33,8 @@ export default function App() {
         This example requires updating your template:
 
         ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
+        <html className="h-full bg-gray-100">
+        <body className="h-full">
         ```
       */}
       <div className="min-h-full">
@@ -175,6 +176,7 @@ export default function App() {
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <Form/>
+            <Table/>
           </div>
         </main>
       </div>
