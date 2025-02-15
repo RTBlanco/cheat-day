@@ -11,8 +11,6 @@ export default function Form({ calPerDay, restDays, setCalPerDay, setRestDays })
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCalPerDay(calPerDay); // Pass the value up
-    setRestDays(restDays);
     console.log("Calories Per Day:", calPerDay);
     console.log("Rest Days:", restDays);
     // setCalPerDay()

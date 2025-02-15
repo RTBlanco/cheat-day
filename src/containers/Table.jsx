@@ -1,45 +1,23 @@
 import { Card, Typography } from "@material-tailwind/react";
+import { useState } from "react";
  
 const TABLE_HEAD = ["Days", "Calories"];
  
-const TABLE_ROWS = [
-  {
-    day: "Monday",
-    cals: "1500",
-  },
 
-  {
-    day: "Tuesday",
-    cals: "1500",
-  },
+export default function Table({ calPerDay, restDays }) {
 
-  {
-    day: "Wednesday",
-    cals: "1500",
-  },
-
-  {
-    day: "Thursday",
-    cals: "1500",
-  },
-
-  {
-    day: "Friday",
-    cals: "1500",
-  },
-
-  {
-    day: "Saturday",
-    cals: "1500",
-  },
-
-  {
-    day: "Sunday",
-    cals: "1500",
-  },
-];
-
-export default function Table({ calPerDay }) {
+  const [tableRows, setTableRow] = useState({
+    Monday: 0,
+    Tuesday: 0,
+    Wednesday: 0,
+    Thursday: 0,
+    Friday: 0,
+    Saturday: 0,
+    Sunday: 0
+  })
+  
+  
+  {console.log(tableRows)}
   return (
     <section className="w-full">
       <div className="p-6">
@@ -69,10 +47,10 @@ export default function Table({ calPerDay }) {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ day, cals }, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
+            {tableRows.map(({ day, cals }, index) => {
+              const isLast = index === tableRows.length - 1;
               const classes = isLast ? "py-4" : "py-4 border-b border-gray-300";
- 
+
               return (
                 <tr key={day} className="hover:bg-gray-50">
                   <td className={classes}>

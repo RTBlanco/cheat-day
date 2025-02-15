@@ -173,8 +173,8 @@ export default function App() {
         </header>
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <Form props={[calPerDay, restDays, setCalPerDay, setRestDay]} />
-            <Table calPerDay={calPerDay} />
+            <Form calPerDay={calPerDay} restDays={restDays} setCalPerDay={setCalPerDay} setRestDay={setRestDay} />
+            <Table calPerDay={calPerDay} restDays={restDays} />
           </div>
         </main>
       </div>
