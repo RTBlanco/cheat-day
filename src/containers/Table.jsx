@@ -18,6 +18,7 @@ export default function Table({ calPerDay, restDays }) {
   
   
   {console.log(tableRows)}
+  // debugger
   return (
     <section className="w-full">
       <div className="p-6">
@@ -47,12 +48,12 @@ export default function Table({ calPerDay, restDays }) {
             </tr>
           </thead>
           <tbody>
-            {tableRows.map(({ day, cals }, index) => {
-              const isLast = index === tableRows.length - 1;
+            {Object.keys(tableRows).map((day, index) => {
+              const isLast = index === Object.keys(tableRows).length - 1;
               const classes = isLast ? "py-4" : "py-4 border-b border-gray-300";
 
               return (
-                <tr key={day} className="hover:bg-gray-50">
+                <tr key={index} className="hover:bg-gray-50">
                   <td className={classes}>
                     <Typography
                       variant="small"
@@ -67,7 +68,7 @@ export default function Table({ calPerDay, restDays }) {
                       variant="small"
                       className="font-normal text-gray-600"
                     >
-                      {cals}
+                      {tableRows[day]}
                     </Typography>
                   </td>
                 </tr>
