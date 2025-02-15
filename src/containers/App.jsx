@@ -1,5 +1,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 import Form from './Form'
 import Table from './Table'
 
@@ -27,16 +28,12 @@ function classNames(...classes) {
 }
 
 export default function App() {
+
+  const [calPerDay, setCalPerDay] = useState(0)
+
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html className="h-full bg-gray-100">
-        <body className="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -175,8 +172,8 @@ export default function App() {
         </header>
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <Form/>
-            <Table/>
+            <Form setCalPerDay={setCalPerDay} />
+            <Table calPerDay={calPerDay} />
           </div>
         </main>
       </div>

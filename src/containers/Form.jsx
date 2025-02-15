@@ -2,11 +2,16 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { Button } from '@material-tailwind/react';
 
-export default function Form() {
+export default function Form({ setCalPerDay }) {
 
   const inputs = {
     "cal-per-day" : "Calories Per Day",
     "rest-days" : "Rest Days"
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setCalPerDay()
   }
 
   return (

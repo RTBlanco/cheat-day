@@ -39,7 +39,7 @@ const TABLE_ROWS = [
   },
 ];
 
-export default function Table() {
+export default function Table({ calPerDay }) {
   return (
     <section className="w-full">
       <div className="p-6">
