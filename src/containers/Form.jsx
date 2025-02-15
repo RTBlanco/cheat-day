@@ -1,8 +1,8 @@
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+// import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+// import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { Button } from '@material-tailwind/react';
 
-export default function Form({ setCalPerDay }) {
+export default function Form({ calPerDay, restDays, setCalPerDay, setRestDays }) {
 
   const inputs = {
     "cal-per-day" : "Calories Per Day",
@@ -11,11 +11,15 @@ export default function Form({ setCalPerDay }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCalPerDay()
+    setCalPerDay(calPerDay); // Pass the value up
+    setRestDays(restDays);
+    console.log("Calories Per Day:", calPerDay);
+    console.log("Rest Days:", restDays);
+    // setCalPerDay()
   }
 
   return (
-    <form className='flex-col'>
+    <form className='flex-col' onSubmit={handleSubmit}>
       <div className='flex justify-center'>
         {Object.keys(inputs).map((input, index) => (
           <div key={index} className='mx-25'>
@@ -28,6 +32,8 @@ export default function Form({ setCalPerDay }) {
                   type="text"
                   name={input}
                   id={input}
+                  value={input === 'cal-per-day' ? calPerDay : restDays}
+                  onChange={(e) => input === "cal-per-day" ? setCalPerDay(e.target.value) : setRestDays(e.target.value)}
                   className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 focus:outline-none sm:text-sm"
                 />
               </div>
@@ -37,7 +43,7 @@ export default function Form({ setCalPerDay }) {
       </div>
 
       <div className='flex justify-center my-10'>
-        <Button>Enter</Button>
+        <Button type='submit'>Enter</Button>
       </div>
     </form>
   );

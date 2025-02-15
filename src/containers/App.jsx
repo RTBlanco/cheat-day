@@ -29,7 +29,8 @@ function classNames(...classes) {
 
 export default function App() {
 
-  const [calPerDay, setCalPerDay] = useState(0)
+  const [calPerDay, setCalPerDay] = useState("")
+  const [restDays, setRestDay] = useState("")
 
 
   return (
@@ -172,7 +173,7 @@ export default function App() {
         </header>
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <Form setCalPerDay={setCalPerDay} />
+            <Form props={[calPerDay, restDays, setCalPerDay, setRestDay]} />
             <Table calPerDay={calPerDay} />
           </div>
         </main>
