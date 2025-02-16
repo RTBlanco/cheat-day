@@ -1,5 +1,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Slider } from "@material-tailwind/react";
 import { useState } from 'react'
 import Form from './Form'
 import Table from './Table'
@@ -29,9 +30,47 @@ function classNames(...classes) {
 
 export default function App() {
 
-  const [calPerDay, setCalPerDay] = useState("")
-  const [restDays, setRestDay] = useState("")
+  const [calPerWeek, setcalPerWeek] = useState("")
+  const [restDays, setRestDays] = useState("")
+  const [totalCal, setTotalCal] = useState(0)
+  const [highCalPercentage, setHighCalPercentage] = useState(1.3)
+  const [tableRows, setTableRow] = useState({
+    Monday: 0,
+    Tuesday: 0,
+    Wednesday: 0,
+    Thursday: 0,
+    Friday: 0,
+    Saturday: 0,
+    Sunday: 0
+  })
 
+  const updateData = () => {
+    const parsedcalPerWeek = parseInt(calPerWeek)
+    const parsedRestDays = parseInt(restDays)
+
+    const daysPerWeek = 7;
+    const lowCalDays = daysPerWeek - parsedRestDays; // Remaining low-calorie days
+
+    // Calculate High-Calorie Day Intake
+    const baseCalories = parsedcalPerWeek / daysPerWeek;
+    const highCalories = Math.round(baseCalories * highCalPercentage);
+
+    // Remaining Calories for Low-Calorie Days
+    const remainingCalories = parsedcalPerWeek - (parsedRestDays * highCalories);
+    const lowCalories = Math.round(remainingCalories / lowCalDays);
+    
+
+    setTableRow((prev) => {
+
+      const cur = {}
+      for (const key in prev) {
+        cur[key] = parseInt(restDays) > 0 && ['Saturday', 'Sunday'].includes(key) ? highCalories : lowCalories 
+      }
+
+      return cur
+    })
+    setTotalCal(calPerWeek)
+  }
 
   return (
     <>
@@ -173,8 +212,8 @@ export default function App() {
         </header>
         <main>
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <Form calPerDay={calPerDay} restDays={restDays} setCalPerDay={setCalPerDay} setRestDay={setRestDay} />
-            <Table calPerDay={calPerDay} restDays={restDays} />
+            <Form updateData={updateData} highCalPercentage={highCalPercentage} setHighCalPercentage={setHighCalPercentage} totalCal={totalCal} setTotalCal={setTotalCal} calPerWeek={calPerWeek} restDays={restDays} setTableRow={setTableRow} setcalPerWeek={setcalPerWeek} setRestDays={setRestDays} />
+            <Table setTableRow={setTableRow} updateData={updateData} highCalPercentage={highCalPercentage} setHighCalPercentage={setHighCalPercentage} totalCal={totalCal} setTotalCal={setTotalCal} tableRows={tableRows} calPerWeek={calPerWeek} restDays={restDays} />
           </div>
         </main>
       </div>

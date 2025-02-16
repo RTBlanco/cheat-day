@@ -2,18 +2,19 @@
 // import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { Button } from '@material-tailwind/react';
 
-export default function Form({ calPerDay, restDays, setCalPerDay, setRestDays }) {
+export default function Form({updateData, highCalPercentage, setHighCalPercentage, totalCal, setTotalCal, calPerWeek, restDays, setTableRow, setcalPerWeek, setRestDays }) {
 
   const inputs = {
-    "cal-per-day" : "Calories Per Day",
+    "cal-per-day" : "Calories Per Week",
     "rest-days" : "Rest Days"
   }
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("Calories Per Day:", calPerDay);
+    console.log("Calories Per Week:", calPerWeek);
     console.log("Rest Days:", restDays);
-    // setCalPerDay()
+
+    updateData()
   }
 
   return (
@@ -30,8 +31,8 @@ export default function Form({ calPerDay, restDays, setCalPerDay, setRestDays })
                   type="text"
                   name={input}
                   id={input}
-                  value={input === 'cal-per-day' ? calPerDay : restDays}
-                  onChange={(e) => input === "cal-per-day" ? setCalPerDay(e.target.value) : setRestDays(e.target.value)}
+                  value={input === 'cal-per-day' ? calPerWeek : restDays}
+                  onChange={(e) => input === "cal-per-day" ? setcalPerWeek(e.target.value)  : setRestDays(e.target.value )}
                   className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 focus:outline-none sm:text-sm"
                 />
               </div>
@@ -47,3 +48,5 @@ export default function Form({ calPerDay, restDays, setCalPerDay, setRestDays })
   );
   
 }
+
+

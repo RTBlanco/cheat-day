@@ -1,24 +1,18 @@
-import { Card, Typography } from "@material-tailwind/react";
+import { Card, Typography, Slider } from "@material-tailwind/react";
 import { useState } from "react";
  
 const TABLE_HEAD = ["Days", "Calories"];
  
 
-export default function Table({ calPerDay, restDays }) {
+export default function Table({setTableRow, updateData, highCalPercentage, setHighCalPercentage, totalCal, setTotalCal, tableRows, calPerWeek, restDays }) {
+  
+  const handleChange = e => {
+    updateData()
+    console.log(Math.round(e.target.value) / 100 + 1)
+    setHighCalPercentage(Math.round(e.target.value) / 100 + 1)
 
-  const [tableRows, setTableRow] = useState({
-    Monday: 0,
-    Tuesday: 0,
-    Wednesday: 0,
-    Thursday: 0,
-    Friday: 0,
-    Saturday: 0,
-    Sunday: 0
-  })
+  }
   
-  
-  {console.log(tableRows)}
-  // debugger
   return (
     <section className="w-full">
       <div className="p-6">
@@ -29,6 +23,7 @@ export default function Table({ calPerDay, restDays }) {
         Zigzag dieting, or calorie cycling, is a method where you alternate between high- and low-calorie days to keep metabolism active, prevent plateaus, and support weight management.
         By entering the amount of calories you wish consume in a week plus how many rest days you want, this will generate a simple caloric week plan that you can follow.By default the weekend are considerd cheatdays!
         </Typography>
+        <Slider  onChange={handleChange} defaultValue={parseInt((highCalPercentage * 100) - 100)}/>
       </div>
       <Card className="h-full w-full border border-gray-300 px-6">
         <table className="w-full min-w-max table-auto text-left">
@@ -92,7 +87,7 @@ export default function Table({ calPerDay, restDays }) {
                   variant="small"
                   className="font-bold"
                 >
-                  10500
+                  {totalCal}
                 </Typography>
               </td>
             </tr>
