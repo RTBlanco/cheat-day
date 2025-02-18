@@ -20,7 +20,7 @@ export default function Table({setTableRow, updateData, highCalPercentage, setHi
           ZigZag Dieting
         </Typography>
         <Typography className="mb-4 w-80 font-normal text-gray-600 md:w-full">
-        Zigzag dieting, or calorie cycling, is a method where you alternate between high- and low-calorie days to keep metabolism active, prevent plateaus, and support weight management.
+        Zigzag dieting, or calorie cycling, is a method where you alternate between high-calorie and low-calorie days to keep metabolism active, prevent plateaus, and support weight management.
         By entering the amount of calories you wish consume in a week plus how many rest days you want, this will generate a simple caloric week plan that you can follow.By default the weekend are considerd cheatdays!
         </Typography>
         <Slider  onChange={handleChange} defaultValue={parseInt((highCalPercentage * 100) - 100)}/>
